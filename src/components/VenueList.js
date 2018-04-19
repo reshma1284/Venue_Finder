@@ -87,31 +87,67 @@ class VenueList extends Component{
                     <div  key={index} id="listArea">
                     <img src="/linkedin-logo.png" alt="Venue_logo" className="venueLogo" />
                     <div className="venueInfo">
-                        <h3> Name:  {item.name} </h3>
 
-                        {item.location.address !== undefined ?
-                              <p> Address:  {item.location.address}</p>
-                            :
-                              <p> Address:  Not Available </p>
-                        }
+                      <ul className="VenueList-leftList">
+                          <table>
+                          <thead></thead>
+                          <tbody>
+                            <tr>
+                              <td className="VenueList-firstCol">  <li> Name: </li></td>
+                              <td className="VenueList-secCol"> <li> {item.name} </li> </td>
+                             </tr>
 
-                        {item.location.crossStreet !== undefined ?
-                              <p> CrossStreet:  {item.location.crossStreet}</p>
-                            :
-                              <p> CrossStreet:  Not Available </p>
-                        }
 
-                        {item.location.distance !== undefined ?
-                              <p> Distance:  {item.location.distance}</p>
-                            :
-                              <p> Distance:  Not Available </p>
-                        }
+                                 {item.location.address !== undefined ?
+                                   <tr>
+                                      <td className="VenueList-firstCol"><li> Address: </li> </td>
+                                      <td className="VenueList-secCol"> <li> {item.location.address} </li></td>
+                                   </tr>
+                                  :
+                                   <tr>
+                                       <td className="VenueList-firstCol"><li> Address: </li> </td>
+                                       <td className="VenueList-secCol"> <li> Not Available </li></td>
+                                   </tr>
+                                 }
 
-                        {item.categories[0].name !== undefined ?
-                              <p> Category name:  {item.categories[0].name}</p>
-                            :
-                              <p> Category name:  Not Available </p>
-                        }
+                                 {item.location.crossStreet !== undefined ?
+                                   <tr>
+                                     <td className="VenueList-firstCol"><li> CrossStreet: </li> </td>
+                                     <td className="VenueList-secCol"> <li> {item.location.crossStreet} </li></td>
+                                   </tr>
+                                  :
+                                   <tr>
+                                     <td className="VenueList-firstCol"><li> CrossStreet: </li> </td>
+                                     <td className="VenueList-secCol"> <li> Not Available </li></td>
+                                   </tr>
+                                 }
+
+                                 {item.location.distance !== undefined ?
+                                   <tr>
+                                     <td className="VenueList-firstCol"><li> Distance: </li> </td>
+                                     <td className="VenueList-secCol">  <li> {item.location.distance} </li> </td>
+                                   </tr>
+                                  :
+                                   <tr>
+                                      <td className="VenueList-firstCol"><li> Distance: </li> </td>
+                                      <td className="VenueList-secCol">  <li> Not Available </li> </td>
+                                   </tr>
+                                 }
+
+                                 {item.categories[0].name !== undefined ?
+                                   <tr>
+                                     <td className="VenueList-firstCol"><li> Category Name: </li> </td>
+                                     <td className="VenueList-secCol">  <li> {item.categories[0].name} </li> </td>
+                                   </tr>
+                                  :
+                                   <tr>
+                                      <td className="VenueList-firstCol"><li> Category Name: </li> </td>
+                                      <td className="VenueList-secCol">  <li> Not Available </li> </td>
+                                   </tr>
+                                 }
+                             </tbody>
+                          </table>
+                          </ul>
                     </div>
                   </div>
                 )

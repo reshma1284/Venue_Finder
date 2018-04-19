@@ -36,3 +36,27 @@ li{
   display: inline-block;
   margin-left: 3%;
 }
+span{
+  padding: 10px;
+}
+.VenueList-leftList{
+  /* width: 30%; */
+  height: 30%;
+  display: inline-block;
+  text-align: left;
+}
+
+.VenueList-leftList li{
+  list-style: none;
+  padding-right: 10px;
+}
+
+.VenueList-firstCol{
+  width: 40%;
+  height: 50px;
+}
+
+.VenueList-secCol{
+  width: 60%;
+    height: 50px;
+}
