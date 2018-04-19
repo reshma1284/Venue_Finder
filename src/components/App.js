@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path='/' component={VenueList} />
+          <Route exact path='/' component={ VenueList } />
         </Switch>
       </Router>
 
