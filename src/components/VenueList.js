@@ -32,6 +32,25 @@ class VenueList extends Component{
 */
   handleSubmit(event){
     event.preventDefault();
+    let _this = this;
+    const CLIENT_ID = '5FYV05ZWNRTAGO3DTM4VDUXUVFMWIKBXQP0YPP04HZZY0OT1';
+    const CLIENT_SECRET = 'PROAAXR0P4IKVRV1HZNJPJQTU4MIV0V4WFW5YR2SD0ITLZ0K';
+    const vdate = '20180425';
+    var location = _this.state.data.location;
+    var QUERY = _this.state.data.category;
+    const LIMIT = 5;
+    var RADIUS = _this.state.data.distance;
+
+    fetch(`https://api.foursquare.com/v2/venues/search?near=${location}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&query=${QUERY}&v=${vdate}&limit=${LIMIT}&radius=${RADIUS}`)
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(json_response){
+      _this.setState({venues : json_response.response.venues})
+    })
+    .catch(function(error){
+      console.log(error);
+    });
   }
 
 
@@ -60,6 +79,46 @@ class VenueList extends Component{
               <button type="submit" className="btn btn-primary">Search!</button>
               <p className="text-danger">{}</p>
           </form>
+
+          { this.state.venues !== "loading" &&
+          this.state.venues.map(function(item,index){
+
+            return(
+                    <div  key={index} id="listArea">
+                    <img src="/linkedin-logo.png" alt="Venue_logo" className="venueLogo" />
+                    <div className="venueInfo">
+                        <h3> Name:  {item.name} </h3>
+
+                        {item.location.address !== undefined ?
+                              <p> Address:  {item.location.address}</p>
+                            :
+                              <p> Address:  Not Available </p>
+                        }
+
+                        {item.location.crossStreet !== undefined ?
+                              <p> CrossStreet:  {item.location.crossStreet}</p>
+                            :
+                              <p> CrossStreet:  Not Available </p>
+                        }
+
+                        {item.location.distance !== undefined ?
+                              <p> Distance:  {item.location.distance}</p>
+                            :
+                              <p> Distance:  Not Available </p>
+                        }
+
+                        {item.categories[0].name !== undefined ?
+                              <p> Category name:  {item.categories[0].name}</p>
+                            :
+                              <p> Category name:  Not Available </p>
+                        }
+                    </div>
+                  </div>
+                )
+          })
+
+        }
+
         </div>
     )
   }
