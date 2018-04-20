@@ -46,7 +46,8 @@ class VenueList extends Component{
         locationValidationMsg: locationValidationMsg,
         categoryValidationMsg: categoryValidationMsg
         })
-
+        
+// fetching the venue info from API based on the user input
     if(!locationValidationMsg && !categoryValidationMsg){
 
           let _this = this;
@@ -70,7 +71,6 @@ class VenueList extends Component{
           });
      }
   }
-
 
   render(){
     return(
@@ -119,7 +119,6 @@ class VenueList extends Component{
                               <td className="VenueList-firstCol">  <li> Name: </li></td>
                               <td className="VenueList-secCol"> <li> <h3> {item.name} </h3></li> </td>
                              </tr>
-
 
                                  {item.location.address !== undefined ?
                                    <tr>
