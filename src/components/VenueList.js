@@ -46,7 +46,7 @@ class VenueList extends Component{
         locationValidationMsg: locationValidationMsg,
         categoryValidationMsg: categoryValidationMsg
         })
-        
+
 // fetching the venue info from API based on the user input
     if(!locationValidationMsg && !categoryValidationMsg){
 
@@ -72,13 +72,14 @@ class VenueList extends Component{
      }
   }
 
+  /*
+    @ desc adding form fields to accept user input (Location, Category, Distance) and
+      displaying the venue list using the map function
+  */
   render(){
     return(
       <div className="container page-content">
         <h1> Venue Finder App </h1>
-
-//form fields to accept user input (Location, Category, Distance)
-
         <form onSubmit={this.handleSubmit} id="getUserInput">
               <div className="form-group">
                   <label htmlFor="inputLocation">Location</label>
@@ -101,8 +102,6 @@ class VenueList extends Component{
               <p className="text-danger">{}</p>
           </form>
 
-//displaying the venue list using the map function
-
           { this.state.venues &&
             this.state.venues !== "loading" &&
           this.state.venues.map(function(item,index){
@@ -110,7 +109,6 @@ class VenueList extends Component{
             return(
                     <div  key={index} id="listArea">
                     <div className="venueInfo">
-
                       <ul className="VenueList-leftList">
                           <table>
                           <thead></thead>
